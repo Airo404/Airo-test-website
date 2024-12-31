@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Videos & Contact</title>
+    <style>
+        /* تنظیمات عمومی */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h1, h2, p {
+            text-align: center;
+            font-size: 3rem;
+            margin: 0;
+        }
+
+        /* استایل دکمه‌ها */
+        .nav-buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .nav-buttons button {
+            background-color: #8e44ad;
+            color: white;
+            padding: 20px 40px;
+            font-size: 1.5rem;
+            margin: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 250px;
+        }
+
+        .nav-buttons button:hover {
+            background-color: #9b59b6;
+        }
+
+        /* استایل صفحه ویدیوها */
+        .video-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .video-title {
+            background-color: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 250px;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .video-title:hover {
+            background-color: #8e44ad;
+        }
+
+        /* پخش ویدیو */
+        .video-player {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .video-player video {
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+        }
+
+        /* بخش ارتباط با ما */
+        .contact-section {
+            background-color: #222;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .contact-section h2 {
+            color: #fff;
+        }
+
+        .contact-section p {
+            color: #ccc;
+            font-size: 1.5rem;
+        }
+
+        .contact-section a {
+            color: #8e44ad;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            color: #9b59b6;
+        }
+
+        /* استایل صفحه هوم */
+        .home-page {
+            display: block;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* استایل صفحه ویدیو */
+        .video-page {
+            display: none;
+        }
+
+        /* استایل لوگو */
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- صفحه هوم -->
+    <div id="homePage" class="home-page">
+        <img src="https://drive.google.com/uc?export=view&id=1tZdPkoyBk4Br9YSRO-lssDH5zOaRBNHq" alt="Logo" class="logo">
+        <h1>Welcome to Our Website</h1>
+
+        <div class="nav-buttons">
+            <button onclick="goToVideos()">Go to Videos</button>
+            <button onclick="goToContact()">Contact Us</button>
+            <button onclick="goToTelegram()">Telegram</button>
+            <button onclick="goToInstagram()">Instagram</button>
+        </div>
+    </div>
+
+    <!-- صفحه ویدیوها -->
+    <div id="videoPage" class="video-page">
+        <h2>Video Gallery</h2>
+
+        <div class="video-gallery">
+            <div class="video-title" onclick="playVideo('video1')">Video 1</div>
+            <div class="video-title" onclick="playVideo('video2')">Video 2</div>
+            <div class="video-title" onclick="playVideo('video3')">Video 3</div>
+            <div class="video-title" onclick="playVideo('video4')">Video 4</div>
+            <div class="video-title" onclick="playVideo('video5')">Video 5</div>
+            <div class="video-title" onclick="playVideo('video6')">Video 6</div>
+            <div class="video-title" onclick="playVideo('video7')">Video 7</div>
+            <div class="video-title" onclick="playVideo('video8')">Video 8</div>
+            <div class="video-title" onclick="playVideo('video9')">Video 9</div>
+            <div class="video-title" onclick="playVideo('video10')">Video 10</div>
+        </div>
+
+        <div class="video-player">
+            <video id="videoPlayer" controls>
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="goHome()">Back to Home</button>
+        </div>
+    </div>
+
+    <!-- بخش ارتباط با ما -->
+    <div id="contactPage" class="video-page">
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <p>Feel free to reach out to us via email, or follow us on social media.</p>
+            <p><a href="mailto:contact@ourwebsite.com">Email Us</a></p>
+            <p><a href="https://www.instagram.com" target="_blank">Instagram</a> | <a href="https://www.telegram.com" target="_blank">Telegram</a></p>
+
+            <div class="nav-buttons">
+                <button onclick="goHome()">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // رفتن به بخش ویدیوها
+        function goToVideos() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('videoPage').style.display = 'block';
+        }
+
+        // رفتن به بخش ارتباط با ما
+        function goToContact() {
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('contactPage').style.display = 'block';
+        }
+
+        // رفتن به تلگرام
+        function goToTelegram() {
+            window.location.href = 'https://t.me';
+        }
+
+        // رفتن به اینستاگرام
+        function goToInstagram() {
+            window.location.href = 'https://www.instagram.com';
+        }
+
+        // برگشت به صفحه هوم
+        function goHome() {
+            document.getElementById('homePage').style.display = 'block';
+            document.getElementById('videoPage').style.display = 'none';
+            document.getElementById('contactPage').style.display = 'none';
+            stopVideo(); // متوقف کردن ویدیو هنگام برگشت به صفحه هوم
+        }
+
+        // پخش ویدیوها
+        function playVideo(videoId) {
+            let videoSource = '';
+            if (videoId === 'video1') {
+                videoSource = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            } else if (videoId === 'video2') {
+                videoSource = 'https://www.w3schools.com/html/movie.mp4';
+            } else if (videoId === 'video3') {
+                videoSource = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            } else if (videoId === 'video4') {
+                videoSource = 'https://www.w3schools.com/html/movie.mp4';
+            } else if (videoId === 'video5') {
+                videoSource = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            } else if (videoId === 'video6') {
+                videoSource = 'https://www.w3schools.com/html/movie.mp4';
+            } else if (videoId === 'video7') {
+                videoSource = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            } else if (videoId === 'video8') {
+                videoSource = 'https://www.w3schools.com/html/movie.mp4';
+            } else if (videoId === 'video9') {
+                videoSource = 'https://www.w3schools.com/html/mov_bbb.mp4';
+            } else if (videoId === 'video10') {
+                videoSource = 'https://www.w3schools.com/html/movie.mp4';
+            }
+
+            document.getElementById('videoSource').src = videoSource;
+            document.getElementById('videoPlayer').load();
+            document.getElementById('videoPlayer').play();
+        }
+
+        // توقف ویدیو هنگام برگشت به هوم
+        function stopVideo() {
+            var video = document.getElementById('videoPlayer');
+            video.pause();
+            video.currentTime = 0;
+        }
+    </script>
+
+</body>
+</html>
